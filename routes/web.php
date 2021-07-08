@@ -1,12 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\QRController;
 
 Route::get('/', function () {
     return view('user.landing_page');
 });
 
-Route::post('/qrcode', function () {
-    $txt = request('text');
-    return QrCode::size(300)->generate($txt);
-});
+Route::post('/qrcode', [QRController::class, 'create']);
