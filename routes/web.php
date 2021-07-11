@@ -3,8 +3,5 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QRController;
 
-Route::get('/', function () {
-    return view('user.landing_page');
-});
-
-Route::post('/qrcode', [QRController::class, 'create']);
+Route::view('/', 'create_qr');
+Route::post('/create-qr-text', [QRController::class, 'create_txt']);

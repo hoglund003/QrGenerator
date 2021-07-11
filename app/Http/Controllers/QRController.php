@@ -7,8 +7,11 @@ use QrCode;
 
 class QRController extends Controller
 {
-    public function create(){
-        $txt = request('text');
-        return QrCode::size(300)->generate($txt);
+    public function create_txt(){
+        $input = request('input');
+        $size = request('size');
+        $qrCode = QrCode::size($size)->generate($input);
+
+        return view('show-qr', ['qrCode' => $qrCode]);
     }
 }
